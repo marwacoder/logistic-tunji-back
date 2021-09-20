@@ -10,41 +10,16 @@ module.exports = {
       goodsName: {
         type: Sequelize.STRING
       },
-      description: {
-        type: Sequelize.STRING
-      },
       category: {
         type: Sequelize.STRING
       },
       quantity: {
         type: Sequelize.INTEGER
       },
-      customerId:{
-        type: Sequelize.STRING,
-        references: {
-        model: 'Customers',
-        key: 'id'
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-      },
-      vehicleId:{
-        type: Sequelize.STRING,
-        references: {
-        model: 'Vehicles',
-        key: 'id'
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-      },
-      driverId:{
-        type: Sequelize.STRING,
-        references: {
-        model: 'Drivers',
-        key: 'id'
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
+      status: {
+        type: Sequelize.ENUM,
+        values: ['Dispatched', 'Not Dispatched'],
+        defaultValue: 'Not Dispatched'
       },
       createdAt: {
         allowNull: false,

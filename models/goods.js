@@ -6,13 +6,20 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
       },
     goodsName: DataTypes.STRING,
-    description: DataTypes.STRING,
     category: DataTypes.STRING,
     quantity: DataTypes.INTEGER,
-    customerId: DataTypes.STRING
+    status: {
+      type: DataTypes.ENUM,
+      values: ['Dispatched', 'Not Dispatched'],
+      defaultValue: 'Not Dispatched'
+    },
   }, {});
   Goods.associate = function(models) {
     // associations can be defined here
+    Goods.hasMany(models.Customer,{
+      as: 'goods',
+      foreignKey: 'goodsId'
+    })
   };
   return Goods;
 };

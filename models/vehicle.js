@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Vehicle.associate = function(models) {
     // associations can be defined here
+    Vehicle.hasMany(models.Customer,{
+      as: 'vehicles',
+      foreignKey: 'vehicleId'
+    })
   };
   return Vehicle;
 };

@@ -12,11 +12,25 @@ module.exports = (sequelize, DataTypes) => {
     },
     email: DataTypes.STRING,
     phoneNumber: DataTypes.STRING,
-    contactAddress: DataTypes.STRING,
-    goodsId: DataTypes.STRING
+    goodsId: DataTypes.STRING,
+    driverId: DataTypes.STRING,
+    vehicleId: DataTypes.STRING
   }, {});
   Customer.associate = function(models) {
     // associations can be defined here
+  
+    Customer.belongsTo(models.Goods,{
+      as: 'goods',
+      foreignKey: 'goodsId'
+    })
+    Customer.belongsTo(models.Vehicle,{
+      as: 'vehicles',
+      foreignKey: 'vehicleId'
+    })
+    Customer.belongsTo(models.Driver,{
+      as: 'drivers',
+      foreignKey: 'driverId'
+    })
   };
   return Customer;
 };

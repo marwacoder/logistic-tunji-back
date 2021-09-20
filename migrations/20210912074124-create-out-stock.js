@@ -1,44 +1,23 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Customers', {
+    return queryInterface.createTable('OutStocks', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.STRING
       },
-      fullName: {
+      goodsName: {
         type: Sequelize.STRING
       },
-      gender: {
-        type: Sequelize.ENUM,
-        values: ['Male', 'Female']
-      },
-      email: {
+      description: {
         type: Sequelize.STRING
       },
-      phoneNumber: {
+      category: {
         type: Sequelize.STRING
       },
-      goodsId: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        references: {
-          model: "Goods",
-          key: "id"
-        },
-        onUpdate: "CASCADE",
-        onDelete: "SET NULL"
-      },
-      vehicleId: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        references: {
-          model: "Vehicles",
-          key: "id"
-        },
-        onUpdate: "CASCADE",
-        onDelete: "SET NULL"
+      quantity: {
+        type: Sequelize.INTEGER
       },
       driverId: {
         type: Sequelize.STRING,
@@ -48,7 +27,7 @@ module.exports = {
           key: "id"
         },
         onUpdate: "CASCADE",
-        onDelete: "SET NULL"
+        onDelete: "CASCADE"
       },
       createdAt: {
         allowNull: false,
@@ -61,6 +40,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Customers');
+    return queryInterface.dropTable('OutStocks');
   }
 };

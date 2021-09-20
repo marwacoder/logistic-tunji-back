@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const accountController = require('../controllers/account-controller');
+const authController = require('../controllers/auth-controller');
 
 
 // http://localhost:8000/cryptopozi
-router.post('/admin/account', accountController.createAdminAccount);
-router.get('/admin/account', accountController.administrator);
+router.post('/login/action', authController.authenticate);
+router.post('/admin/account', authController.addAdmin);
 
 
 

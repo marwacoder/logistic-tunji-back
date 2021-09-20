@@ -1,13 +1,13 @@
 'use strict';
 module.exports = {
-  up: async(queryInterface, Sequelize) => {
-     await queryInterface.createTable('Administrators', {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('Employees', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.STRING
       },
-      fullName: {
+      employeeName: {
         type: Sequelize.STRING
       },
       gender: {
@@ -20,8 +20,9 @@ module.exports = {
       phoneNumber: {
         type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.STRING
+      employeeType: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -33,9 +34,7 @@ module.exports = {
       }
     });
   },
-  down: async(queryInterface, Sequelize) => {
-    // await queryInterface.removeColumn('Administrators','id')
-     await queryInterface.dropTable('Administrators');
-     
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('Employees');
   }
 };

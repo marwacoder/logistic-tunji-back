@@ -15,7 +15,7 @@ const drivers = async(req, res)=>{
         return await res.status(200).json({drivers})
     }catch(error){
         return res.status(500).json({
-                msg: 'Server Error',
+                msg: 'Server Error'+ error,
                 statusCode: 500,
         })
     }
@@ -24,7 +24,7 @@ const drivers = async(req, res)=>{
 const createDriver = async(req, res) =>{
 
     const {fullName, gender, email, phoneNumber, contactAddress, licenceNo } = req.body;
-    console.log(req.body)
+    console.log(req.body,'uuu')
     try{
 
         const driver = await Driver.findAll({where: {email}});

@@ -10,7 +10,8 @@ const customerRoute = require('./routes/customer');
 const driverRoute = require('./routes/driver');
 const goodsRoute = require('./routes/goods');
 const vehicleRoute = require('./routes/vehicle');
-
+const dispatchRoute = require('./routes/dispatch');
+const employeeRoute = require('./routes/employee');
 
 const app = express();
 app.use(cors({
@@ -29,7 +30,8 @@ app.use('/logistics', customerRoute);
 app.use('/logistics', goodsRoute);
 
 app.use('/logistics', vehicleRoute);
-
+app.use('/logistics', dispatchRoute);
+app.use('/logistics', employeeRoute);
 
 
 app.use((req, res, next) => {
